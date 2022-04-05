@@ -1,0 +1,3 @@
+declare const COLLECTION_USERS: string;
+declare const COLLECTION_APPOINTMENTS: string;
+export { COLLECTION_USERS, COLLECTION_APPOINTMENTS };

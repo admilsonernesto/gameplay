@@ -20,7 +20,7 @@ export function Home() {
   const [loading, setLoading] = useState(true);
   const [appointments, setAppointments] = useState<AppointmentProps[]>([]);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
 
   function handleCategorySelect(categoryId: string) {

@@ -40,7 +40,8 @@ export function AppointmentCreate(){
   const [minute, setMinute] = useState('');
   const [description, setDescription] = useState('');
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
+  
 
   function handleOpenGuilds(){
     setOpenGuildsModal(true);

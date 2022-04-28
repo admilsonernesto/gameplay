@@ -4,8 +4,7 @@ import {
   Text, 
   Image,
   Alert,
-  ActivityIndicator,
-  Button
+  ActivityIndicator
 } from 'react-native';
 
 import { useAuth } from '../../hooks/auth';
@@ -20,11 +19,11 @@ import { Background } from '../../components/Background';
 export function SignIn(){
   const { loading, signIn } = useAuth();
 
-  async function handleSignIn() {    
-    try {      
+  async function handleSignIn() {
+    try {
       await signIn();
-    }catch {
-      Alert.alert('Erro no login!');
+    }catch (error) {
+      Alert.alert(error);
     }
   }
 
@@ -48,11 +47,6 @@ export function SignIn(){
             Crie grupos para jogar seus games {'\n'} 
             favoritos com seus amigos
           </Text>
-
-          <Button title='ava'
-            onPress={handleSignIn}
-          />  
-
 
           {
             loading ? <ActivityIndicator color={theme.colors.primary} /> :

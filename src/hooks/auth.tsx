@@ -54,8 +54,6 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function signIn() {    
     try {
-      console.log('signIn');
-
       setLoading(true);
 
       const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`; 
@@ -63,18 +61,13 @@ function AuthProvider({ children }: AuthProviderProps) {
       const { type, params } = await AuthSession
       .startAsync({ authUrl }) as AuthorizationResponse;
 
-      if(type === "success" && !params.error){ 
-        console.log('deu bom');
-        
+      if(type === "success" && !params.error){         
         api.defaults.headers.common['Authorization'] = `Bearer ${params.access_token}`;
 
         const userInfo = await api.get('/users/@me');
 
         const firstName = userInfo.data.username.split(' ')[0];
         userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
-
-        console.log(firstName);
-        console.log(params.access_token);
 
         const userData = {
           ...userInfo.data,
